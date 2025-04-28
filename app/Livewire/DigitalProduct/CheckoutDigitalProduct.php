@@ -3,7 +3,9 @@
 namespace App\Livewire\DigitalProduct;
 
 use App\Models\Product;
+use App\Models\Transaction;
 use App\Services\TripayService;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CheckoutDigitalProduct extends Component
@@ -19,5 +21,49 @@ class CheckoutDigitalProduct extends Component
     public function render()
     {
         return view('livewire.digital-product.checkout-digital-product');
+    }
+
+    public function transaction($method) {
+        $tripay = new TripayService();
+        $user = Auth::user();
+        $product = Product::findOrFail($this->id);
+        $ref = 'INV-JEKATOOLS-' . date('Ymd-His');
+        $payload = [
+            'method' => $method,
+            'merchant_ref' => $ref,
+            'amount' => $product->price,
+            'customer_name' => $user->name,
+            'customer_email' => $user->email,
+            'order_items' => [[
+                'sku' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => 1
+            ]],
+            'callback_url' => url('/api/tripay/callback'),
+            'return_url' => url('/payment/thanks'),
+            'expired_time' => now()->addHours(24)->timestamp,
+        ];
+        $response = $tripay->createTransaction($payload);
+        dd($response);
+        if ($response['success']) {
+            Transaction::create([
+                'user_id' => $user->id,
+                'product_id' => $product->id,
+                'merchant_ref' => $ref,
+                'reference' => $response['data']['reference'],
+                'amount' => $product->price,
+                'payment_method' => $response['data']
+
+
+
+                // 'plan_id' => $plan->id,
+
+
+
+                // 'status' => 'UNPAID',
+                // 'payment_url' => $response['data']['checkout_url'],
+            ]);
+        }
     }
 }

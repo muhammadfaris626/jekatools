@@ -80,10 +80,6 @@ class PaymentCallbackController extends Controller
             switch ($status) {
                 case 'PAID':
                     $transaction->update([
-                        'license_key' => strtoupper(Str::uuid()),
-                        'start_date' => now(),
-                        'end_date' => now()->addMonths($transaction->plan->duration_months),
-                        'is_active' => 1,
                         'status' => 'PAID'
                     ]);
                     License::create([

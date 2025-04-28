@@ -45,6 +45,7 @@ class CheckoutDigitalProduct extends Component
             'expired_time' => now()->addHours(24)->timestamp,
         ];
         $response = $tripay->createTransaction($payload);
+        dd($response);
         if ($response['success']) {
             Transaction::create([
                 'user_id' => $user->id,

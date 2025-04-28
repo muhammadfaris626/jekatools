@@ -84,12 +84,37 @@
                     <x-table-body-row>
                         <x-table-body-data :class="'py-2 w-4'">1</x-table-body-data>
                         <x-table-body-data>{{ $show->product->name }}</x-table-body-data>
-                        <x-table-body-data>{{ $show->product->price }}</x-table-body-data>
+                        <x-table-body-data>{{ 'Rp ' . number_format($show->amount, 0, ',', '.') }}</x-table-body-data>
                         <x-table-body-data>1</x-table-body-data>
-                        <x-table-body-data>{{ $show->product->price * 1 }}</x-table-body-data>
+                        <x-table-body-data>{{ 'Rp ' . number_format($show->amount, 0, ',', '.') * 1 }}</x-table-body-data>
                     </x-table-body-row>
                 </x-table-body>
             </x-table>
+        </div>
+        <div>
+            <div class="flex flex-col md:flex-row gap-6 justify-between md:items-center mb-2">
+                <div>
+
+                </div>
+                <div class="flex gap-4">
+                    <flux:heading size="lg">TOTAL : </flux:heading>
+                    <flux:heading size="lg">{{ 'Rp ' . number_format($show->amount, 0, ',', '.') * 1 }}</flux:heading>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="flex flex-col md:flex-row gap-6 justify-between md:items-center">
+                <div>
+                    <flux:heading>RINCIAN PEMBAYARAN</flux:heading>
+                    <flux:text>Metode Pembayaran : {{ $show->payment_method }}</flux:text>
+                    <flux:text>Kode Pembayaran : </flux:text>
+                    <flux:text>Total Pembayaran : {{ 'Rp ' . number_format($show->amount, 0, ',', '.') * 1 }}</flux:text>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
     </div>
 </app>

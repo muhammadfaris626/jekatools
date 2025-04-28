@@ -21,7 +21,9 @@
                             'BNIVA' => 'bni.png',
                             'BRIVA' => 'bri.png',
                             'MANDIRIVA' => 'mandiri.png',
-                            'BCAVA' => 'bca.png'
+                            'BCAVA' => 'bca.png',
+                            'QRIS' => 'shopeepay.png',
+                            'QRIS2' => 'qris.png'
                         ];
                         $image = $bankImages[$value['code']] ?? 'default.png';
                     @endphp

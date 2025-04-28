@@ -107,7 +107,7 @@
                 <div>
                     <flux:heading>RINCIAN PEMBAYARAN</flux:heading>
                     <flux:text>Metode Pembayaran : {{ $show->payment_method }}</flux:text>
-                    <flux:text>Kode Pembayaran : </flux:text>
+                    <flux:text>Kode Pembayaran : {{ $show->pay_code }}</flux:text>
                     <flux:text>Total Pembayaran : {{ 'Rp ' . number_format($show->amount, 0, ',', '.') * 1 }}</flux:text>
 
                 </div>

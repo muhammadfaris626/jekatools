@@ -58,6 +58,7 @@ class CheckoutDigitalProduct extends Component
                 'total_fee' => $response['data']['total_fee'],
                 'amount_received' => $response['data']['amount_received'],
                 'payment_method' => $response['data']['payment_name'],
+                'pay_code' => $response['data']['pay_code'],
                 'payment_url' => $response['data']['checkout_url'],
                 'status' => 'UNPAID'
             ]);

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('total_fee', 15, 2);
             $table->decimal('amount_received', 15, 2);
             $table->string('payment_method');
+            $table->string('pay_code');
             $table->string('payment_url');
             $table->string('status');
             $table->timestamps();

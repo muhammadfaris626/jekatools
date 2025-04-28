@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\DigitalProduct\CheckoutDigitalProduct;
 use App\Livewire\DigitalProduct\IndexDigitalProduct;
 use App\Livewire\DigitalProduct\ReadDigitalProduct;
@@ -10,12 +11,12 @@ Route::view('/', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-
+    Route::get('dashboard', IndexDashboard::class)->name('dashboard');
     Route::prefix('digital-product')->name('digital-product.')->group(function() {
         Route::get('/', IndexDigitalProduct::class)->name('index');
         Route::get('/read/{id}', ReadDigitalProduct::class)->name('read');

@@ -42,3 +42,11 @@
         </div>
     </div>
 </app>
+
+@push('scripts')
+    <script>
+        Livewire.on('open-new-tab', url => {
+            window.open(url.url, '_blank');
+        });
+    </script>
+@endpush

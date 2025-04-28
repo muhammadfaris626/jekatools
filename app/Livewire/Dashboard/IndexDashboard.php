@@ -10,4 +10,9 @@ class IndexDashboard extends Component
     {
         return view('livewire.dashboard.index-dashboard');
     }
+
+    public function tes() {
+        $url = 'https://google.com';
+        $this->dispatch('open-new-tab', url: $url);
+    }
 }

@@ -121,5 +121,7 @@
         {{ $slot }}
         <flux:toast />
         @fluxScripts
+        @livewireScripts
+        @stack('scripts')
     </body>
 </html>

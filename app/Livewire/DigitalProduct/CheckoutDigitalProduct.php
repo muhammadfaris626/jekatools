@@ -45,7 +45,6 @@ class CheckoutDigitalProduct extends Component
             'expired_time' => now()->addHours(24)->timestamp,
         ];
         $response = $tripay->createTransaction($payload);
-        dd($response);
         if ($response['success']) {
             Transaction::create([
                 'user_id' => $user->id,
@@ -53,17 +52,12 @@ class CheckoutDigitalProduct extends Component
                 'merchant_ref' => $ref,
                 'reference' => $response['data']['reference'],
                 'amount' => $product->price,
-                'payment_method' => $response['data']
-
-
-
-                // 'plan_id' => $plan->id,
-
-
-
-                // 'status' => 'UNPAID',
-                // 'payment_url' => $response['data']['checkout_url'],
+                'payment_method' => $response['data']['payment_name'],
+                'payment_url' => $response['data']['checkout_url'],
+                'status' => 'UNPAID'
             ]);
+            $url = $response['data']['checkout_url'];
+            $this->dispatch('open-new-tab', url: $url);
         }
     }
 }

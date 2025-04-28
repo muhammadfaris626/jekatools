@@ -14,8 +14,7 @@ class CheckoutDigitalProduct extends Component
         $this->id = $id;
         $this->show = Product::find($id);
         $tripay = new TripayService();
-        dd($tripay->getChannels());
-        $this->channels = $tripay->getChannels()['date'] ?? [];
+        $this->channels = $tripay->getChannels()['data'] ?? [];
         dd($this->channels);
     }
     public function render()

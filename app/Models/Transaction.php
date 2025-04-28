@@ -11,7 +11,7 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'product_id', 'merchant_ref', 'reference', 'amount', 'payment_method', 'payment_url', 'status'];
+    protected $fillable = ['user_id', 'product_id', 'merchant_ref', 'reference', 'amount', 'fee_merchant', 'fee_customer', 'total_fee', 'amount_received', 'payment_method', 'payment_url', 'status'];
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class, 'user_id');

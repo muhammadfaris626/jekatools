@@ -53,6 +53,10 @@ class CheckoutDigitalProduct extends Component
                 'merchant_ref' => $ref,
                 'reference' => $response['data']['reference'],
                 'amount' => $product->price,
+                'fee_merchant' => $response['data']['fee_merchant'],
+                'fee_customer' => $response['data']['fee_customer'],
+                'total_fee' => $response['data']['total_fee'],
+                'amount_received' => $response['data']['amount_received'],
                 'payment_method' => $response['data']['payment_name'],
                 'payment_url' => $response['data']['checkout_url'],
                 'status' => 'UNPAID'

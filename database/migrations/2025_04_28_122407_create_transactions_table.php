@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('merchant_ref');
             $table->string('reference');
             $table->decimal('amount', 15, 2);
+            $table->decimal('fee_merchant', 15, 2);
+            $table->decimal('fee_customer', 15, 2);
+            $table->decimal('total_fee', 15, 2);
+            $table->decimal('amount_received', 15, 2);
             $table->string('payment_method');
             $table->string('payment_url');
             $table->string('status');

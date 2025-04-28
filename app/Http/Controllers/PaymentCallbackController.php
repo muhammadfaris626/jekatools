@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\License;
 use App\Models\ReferralBonus;
 use App\Models\Transaction;
 use App\Models\User;
@@ -85,10 +86,18 @@ class PaymentCallbackController extends Controller
                         'is_active' => 1,
                         'status' => 'PAID'
                     ]);
+                    License::create([
+                        'transaction_id' => $transaction->id,
+                        'user_id' => $transaction->user_id,
+                        'product_id' => $transaction->product_id,
+                        'license_code' => strtoupper(Str::uuid()),
+                        'valid_until' => now()->addMonths($transaction->product->duration_days)->endOfDay()
+                    ]);
 
                     $yangDapatBonus = User::where('referral_code', $transaction->user->referred_by)->first();
                     if ($yangDapatBonus) {
                         ReferralBonus::create([
+                            'transaction_id' => $transaction->id,
                             'user_id' => $yangDapatBonus->id,
                             'referred_user_id' => $transaction->user_id,
                             'amount' => $transaction->amount * 0.10

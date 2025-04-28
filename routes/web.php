@@ -3,6 +3,7 @@
 use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\DigitalProduct\CheckoutDigitalProduct;
 use App\Livewire\DigitalProduct\IndexDigitalProduct;
+use App\Livewire\DigitalProduct\InvoiceDigitalProduct;
 use App\Livewire\DigitalProduct\ReadDigitalProduct;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/read/{id}', ReadDigitalProduct::class)->name('read');
         Route::get('/checkout/{id}', CheckoutDigitalProduct::class)->name('checkout');
     });
+    Route::get('payment/thanks', InvoiceDigitalProduct::class)->name('invoice');
 
     foreach (glob(__DIR__ . '/partials/*.php') as $file) {
         require $file;

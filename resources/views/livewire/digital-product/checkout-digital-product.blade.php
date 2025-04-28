@@ -27,8 +27,8 @@
                         ];
                         $image = $bankImages[$value['code']] ?? 'default.png';
                     @endphp
-                    <div class="rounded-lg bg-white dark:bg-zinc-600 p-1">
-                        <div class="rounded-lg p-4 bg-white ">
+                    <div class="rounded-lg bg-zinc-100 dark:bg-zinc-600 p-1">
+                        <div class="rounded-lg p-4 bg-white">
                             <img class="h-16 w-full object-contain" src="{{ asset('images/bank/' . $image) }}" />
                         </div>
                         <flux:heading size="md" class="text-center mt-2">Pembayaran</flux:heading>

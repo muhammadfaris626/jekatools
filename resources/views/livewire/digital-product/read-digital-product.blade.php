@@ -13,7 +13,7 @@
     <div class="grid grid-cols-1 gap-4 my-4">
         <div class="grid grid-cols-1 md:grid-cols-6 gap-2">
             <div class="md:col-span-2 flex flex-col">
-                <div class="relative rounded-lg bg-white dark:bg-zinc-600 p-2">
+                <div class="relative rounded-lg bg-zinc-100 dark:bg-zinc-600 p-2">
                     <img class="rounded-lg h-48 w-full object-cover" src="{{ asset('images/product3.png') }}" />
                     <div class="mt-2">
                         <flux:button :href="route('digital-product.checkout', $show->id)" variant="primary" class="w-full" icon="shopping-cart">Checkout</flux:button>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="md:col-span-4 flex flex-col">
-                <div class="relative flex-1 rounded-lg bg-white dark:bg-zinc-600 p-4">
+                <div class="relative flex-1 rounded-lg bg-zinc-100 dark:bg-zinc-600 p-4">
                     <div>
                         <flux:badge color="sky">{{ ucfirst(strtolower($show->type)) }}</flux:badge>
                     </div>

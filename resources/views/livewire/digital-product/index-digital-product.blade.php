@@ -18,7 +18,7 @@
     <div class="grid grid-cols-1 gap-4 my-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             @foreach($fetch as $key => $value)
-                <div class="rounded-lg bg-white dark:bg-zinc-600 p-1">
+                <div class="rounded-lg bg-zinc-100 dark:bg-zinc-600 p-1">
                     <img class="rounded-lg h-48 w-full object-cover" src="{{ asset('images/product3.png') }}" />
                     <flux:heading size="lg" class="text-center py-2">{{ $value->name }}</flux:heading>
                     <div>

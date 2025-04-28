@@ -8,7 +8,12 @@
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
             <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
-                <x-app-logo />
+                <div class="flex aspect-square items-center justify-center rounded-md bg-accent-content text-accent-foreground">
+                    <img class="h-10 object-cover rounded-lg" src="{{ asset('images/icon.png') }}" />
+                </div>
+                <div class="ms-1 grid flex-1 text-start text-sm">
+                    <span class="mb-0.5 truncate leading-none font-semibold">JEKATOOLS</span>
+                </div>
             </a>
 
             <flux:navlist variant="outline">
